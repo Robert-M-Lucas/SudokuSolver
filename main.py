@@ -2,7 +2,7 @@ import random
 from typing import *
 from solver import solve
 
-saved_sudoku = open("sudoku2.txt", "r").read().replace("\n", "").replace(" ", "")
+saved_sudoku = open("sudoku1.txt", "r").read().replace("\n", "").replace(" ", "")
 init_sudoku = saved_sudoku
 
 
@@ -59,4 +59,8 @@ else:
     solved_sudoku = init_sudoku
 
 for x in range(9):
-    print(" ".join(solved_sudoku[x * 9: x * 9 + 9]))
+    for y in range(3):
+        print(" ".join(solved_sudoku[x * 9 + (y * 3): (x * 9) + (y * 3) + 3]) + "|", end="")
+    print()
+    if x % 3 == 2:
+        print("-----------------")
